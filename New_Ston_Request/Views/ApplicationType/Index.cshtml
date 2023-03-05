@@ -23,15 +23,20 @@
             <thead>
                 <tr>
                     <th>Application Name</th>
-                    <th></th>
+                    <th>Action</th>
                 </tr>
             </thead>
             <tbody>
                 @foreach (var appl in Model)
                 {
                     <tr>
-                        <td>@appl.Name</td>
-                        <td></td>
+                        <td width="80%">@appl.Name</td>
+                        <td class="text-center">
+                            <div class="w-75 btn-group" role="group">
+                                <a asp-controller="ApplicationType" asp-route-id="@appl.Id" asp-action="Edit" class="btn btn-primary mx-2">Edit</a>
+                                <a asp-controller="ApplicationType" asp-route-id="@appl.Id" asp-action="Delete" class="btn btn-danger mx-2">Delete</a>
+                            </div>
+                        </td>
                     </tr>
                 }
             </tbody>
