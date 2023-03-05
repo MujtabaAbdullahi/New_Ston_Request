@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using New_Ston_Request.Data;
 using New_Ston_Request.Models;
 using System.Collections.Generic;
@@ -16,6 +17,26 @@ namespace New_Ston_Request.Controllers
         {
             IEnumerable<ApplicationType> appList = _db.ApplicationType;
             return View(appList);
+        }
+
+        [HttpGet]
+        public IActionResult Create()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult Create(ApplicationType obj)
+        {
+            if (ModelState.IsValid)
+            {
+                _db.ApplicationType.Add(obj);
+                _db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            else
+            return View(obj);
         }
     }
 }
