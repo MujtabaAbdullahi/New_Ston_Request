@@ -1,17 +1,16 @@
 ﻿@model New_Ston_Request.Models.ApplicationType
 @{
-    ViewData["Title"] = "Create";
+    ViewData["Title"] = "Edit";
 }
-
-<!-- For creating New application -->
 <br />
 <br />
 
-<form method="post" asp-action="Create">
+<form method="post">
     <div class="border p-4">
+        <input asp-for="Id" hidden />
         <div asp-validation-summary="ModelOnly" class="text-danger"></div>
         <div class="form-group row pl-3">
-            <h2 class="text-info">Add Application Type</h2>
+            <h2 class="text-info">Edit Application Type</h2>
         </div>
         <div class="row">
             <div class="col-8">
@@ -27,7 +26,7 @@
                 <div class="form-group row">
                     <div class="col-8 offset-4 row">
                         <div class="col">
-                            <input type="submit" class="btn btn-info w-100" value="Create" />
+                            <input type="submit" class="btn btn-info w-100" value="Update" />
                         </div>
                         <div class="col">
                             <a asp-controller="ApplicationType" asp-action="Index" class="btn btn-success w-100">Back</a>
@@ -42,8 +41,8 @@
     </div>
 </form>
 
-@section Scripts 
-{
+@section Scripts
+    {
     @{
         <partial name="_ValidationScriptsPartial" />
     }
