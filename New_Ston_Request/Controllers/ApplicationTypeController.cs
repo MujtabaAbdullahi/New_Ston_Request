@@ -28,16 +28,16 @@ namespace New_Ston_Request.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Create(ApplicationType obj)
+        public IActionResult Create(ApplicationType applist)
         {
             if (ModelState.IsValid)
             {
-                _db.ApplicationType.Add(obj);
+                _db.ApplicationType.Add(applist);
                 _db.SaveChanges();
                 return RedirectToAction("Index");
             }
             else
-            return View(obj);
+            return View(applist);
         }
 
         // Get specific Application type by it's id
@@ -47,27 +47,27 @@ namespace New_Ston_Request.Controllers
             {
                 return NotFound();
             }
-            var obj = _db.ApplicationType.Find(id);
-            if( obj == null)
+            var appType = _db.ApplicationType.Find(id);
+            if(appType == null)
             {
                 return NotFound();
             }
-            return View(obj);
+            return View(appType);
         }
 
         // Edit specific Application type by it's id
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Edit(ApplicationType obj)
+        public IActionResult Edit(ApplicationType appType)
         {
             if (ModelState.IsValid)
             {
-                _db.ApplicationType.Update(obj);
+                _db.ApplicationType.Update(appType);
                 _db.SaveChanges();
                 return RedirectToAction("Index");
             }
             else
-                return View(obj);
+                return View(appType);
         }
 
         public IActionResult Delete(int? id)
@@ -76,24 +76,24 @@ namespace New_Ston_Request.Controllers
             {
                 return NotFound();
             }
-            var obj = _db.ApplicationType.Find(id);
-            if (obj == null)
+            var appType = _db.ApplicationType.Find(id);
+            if (appType == null)
             {
                 return NotFound();
             }
-            return View(obj);
+            return View(appType);
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
         public IActionResult DeletePost(int? id)
         {
-            var obj = _db.ApplicationType.Find(id);
-            if (obj == null)
+            var appType = _db.ApplicationType.Find(id);
+            if (appType == null)
             {
                 return NotFound();
             }
-            _db.ApplicationType.Remove(obj);
+            _db.ApplicationType.Remove(appType);
             _db.SaveChanges();
             return RedirectToAction("Index");
         }

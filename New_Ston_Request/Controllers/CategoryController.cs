@@ -31,16 +31,16 @@ namespace New_Ston_Request.Controllers
         //POST Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Create(Category obj)
+        public IActionResult Create(Category category)
         {
             if (ModelState.IsValid)
             {
-                _db.Category.Add(obj);
+                _db.Category.Add(category);
                 _db.SaveChanges();
                 return RedirectToAction("Index");
             }
             else
-                return View(obj);
+                return View(category);
         }
 
         // Get specific Category by it's id
@@ -50,27 +50,27 @@ namespace New_Ston_Request.Controllers
             {
                 return NotFound();
             }
-            var obj = _db.Category.Find(id);
-            if (obj == null)
+            var category = _db.Category.Find(id);
+            if (category == null)
             {
                 return NotFound();
             }
-            return View(obj);
+            return View(category);
         }
 
         // Edit specific Category by it's id
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Edit(Category obj)
+        public IActionResult Edit(Category category)
         {
             if (ModelState.IsValid)
             {
-                _db.Category.Update(obj);
+                _db.Category.Update(category);
                 _db.SaveChanges();
                 return RedirectToAction("Index");
             }
             else
-                return View(obj);
+                return View(category);
         }
 
         public IActionResult Delete(int? id)
@@ -79,24 +79,24 @@ namespace New_Ston_Request.Controllers
             {
                 return NotFound();
             }
-            var obj = _db.Category.Find(id);
-            if (obj == null)
+            var category = _db.Category.Find(id);
+            if (category == null)
             {
                 return NotFound();
             }
-            return View(obj);
+            return View(category);
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
         public IActionResult DeletePost(int? id)
         {
-            var obj = _db.Category.Find(id);
-            if (obj == null)
+            var category = _db.Category.Find(id);
+            if (category == null)
             {
                 return NotFound();
             }
-            _db.Category.Remove(obj);
+            _db.Category.Remove(category);
             _db.SaveChanges();
             return RedirectToAction("Index");
         }
