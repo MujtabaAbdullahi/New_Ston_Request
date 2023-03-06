@@ -12,7 +12,7 @@
             <h2>Application Type List</h2>
         </div>
         <div class="col-6 text-right">
-            <a asp-controller="ApplicationType" asp-action="Create" class="btn btn-primary">Add New Application Type</a>
+            <a asp-controller="ApplicationType" asp-action="Create" class="btn btn-primary"><i class="fa fa-plus"></i> &nbsp; Add New Application Type</a>
         </div>
     </div>
     <br /><br />
@@ -33,8 +33,8 @@
                         <td width="80%">@appl.Name</td>
                         <td class="text-center">
                             <div class="w-75 btn-group" role="group">
-                                <a asp-controller="ApplicationType" asp-route-id="@appl.Id" asp-action="Edit" class="btn btn-primary mx-2">Edit</a>
-                                <a asp-controller="ApplicationType" asp-route-id="@appl.Id" asp-action="Delete" class="btn btn-danger mx-2">Delete</a>
+                                <a asp-controller="ApplicationType" asp-route-id="@appl.Id" asp-action="Edit" class="btn btn-primary mx-2"><i class="fas fa-edit"></i></a>
+                                <a asp-controller="ApplicationType" asp-route-id="@appl.Id" asp-action="Delete" class="btn btn-danger mx-2"><i class="fas fa-trash-alt"></i></a>
                             </div>
                         </td>
                     </tr>
