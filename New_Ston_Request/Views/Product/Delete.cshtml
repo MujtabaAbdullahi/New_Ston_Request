@@ -1,0 +1,109 @@
+﻿@model New_Ston_Request.Models.Product
+@{
+    ViewData["Title"] = "Delete";
+}
+
+
+<br />
+<br />
+
+<form method="post">
+    <div class="border p-4">
+            <input asp-for="Id" hidden />
+        <div class="form-group row pl-3">
+            <h2 class="text-info">Delete Product</h2>
+        </div>
+        <div class="row">
+            <div class="col-8">
+                <div class="form-group row">
+                    <div class="col-4">
+                        <label asp-for="Name"></label>
+                    </div>
+                    <div class="col-8">
+                        <input asp-for="Name" disabled class="form-control" />
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-4">
+                        <label asp-for="Price"></label>
+                    </div>
+                    <div class="col-8">
+                        <input asp-for="Price" disabled class="form-control" />
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-4">
+                        <label asp-for="Description"></label>
+                    </div>
+                    <div class="col-8">
+                        <textarea asp-for="Description" disabled class="form-control summernote"></textarea>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-4">
+                        Image
+                    </div>
+                    <div class="col-8">
+                        @*<input type="file" accept=".png, .jpg, .jpeg" name="files" id="uploadBox" multiple class="form-control" />*@
+                        <div class="custom-file">
+                            <input type="file" disabled accept=".png, .jpg, .jpeg" name="files" class="custom-file-input" multiple id="uploadBox">
+                            <label class="custom-file-label" for="uploadBox">@Model.Image</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-4">
+                        <label asp-for="Category"></label>
+                    </div>
+                    <div class="col-8">
+
+                        @* With ViewBage
+                        <select asp-for="CategoryId" asp-items="@ViewBag.CategoryDropdown" class="form-control">
+                        <option selected disabled >-- Select Category --</option>
+                        </select>*@
+
+                        @* With ViewData
+                        <select asp-for="CategoryId" asp-items="@ViewData["CategoryDropdown"] as IEnumerable<SelectListItem>" class="form-control">
+                        <option selected disabled>-- Select Category --</option>
+                        </select>*@
+
+                        <input asp-for="Category.Name" disabled class="form-control"/>
+                       
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-8 offset-4 row">
+                        <div class="col">
+                            <input type="submit" class="btn btn-danger w-100" value="Delete" />
+                        </div>
+                        <div class="col">
+                            <a asp-action="Index" class="btn btn-success w-100"><i class="fas fa-sign-out-alt"></i>&nbsp;Back</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-4">
+                 <img src="@WC.ImagePath@Model.Image" width="100%" style="border: 1px solid #bbb; border-radius: 5px;" />
+            </div>
+        </div>
+    </div>
+</form>
+
+@section Scripts
+    {
+    @{
+        <partial name="_ValidationScriptsPartial" />
+    }
+
+    <script>
+
+        // For texteara featurs
+        $(document).ready(function () {
+            $('.summernote').summernote({
+                height: 250
+            });
+        });
+
+        $(".summernote").summernote("disable");
+    </script>
+}

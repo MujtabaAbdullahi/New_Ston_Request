@@ -150,24 +150,34 @@ namespace New_Ston_Request.Controllers
             {
                 return NotFound();
             }
-            var obj = _db.Category.Find(id);
-            if (obj == null)
+            Product product = _db.Product.Include(u => u.Category).Where(u => u.Id == id).FirstOrDefault();
+            //product.Category = _db.Category.Find(product.CategoryId);
+            if (product == null)
             {
                 return NotFound();
             }
-            return View(obj);
+            return View(product);
         }
 
-        [HttpPost]
+        [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public IActionResult DeletePost(int? id)
         {
-            var obj = _db.Category.Find(id);
-            if (obj == null)
+            var product = _db.Product.Find(id);
+            if (product == null)
             {
                 return NotFound();
             }
-            _db.Category.Remove(obj);
+            string upload = _webHostEnvironment.WebRootPath + WC.ImagePath;
+
+            //for deleting old image
+            var productImage = Path.Combine(upload, product.Image);
+            if (System.IO.File.Exists(productImage))
+            {
+                System.IO.File.Delete(productImage);
+            }
+
+            _db.Product.Remove(product);
             _db.SaveChanges();
             return RedirectToAction("Index");
         }
