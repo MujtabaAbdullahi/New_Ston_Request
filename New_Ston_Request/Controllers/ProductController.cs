@@ -86,7 +86,7 @@ namespace New_Ston_Request.Controllers
                 if (productVM.Product.Id == 0)
                 {
                     // Creating
-                    string upload = webRootPath + WC.ImagePath;
+                    string upload = webRootPath + WC.ProductImagePath;
                     string fileName = Guid.NewGuid().ToString();
                     string extension = Path.GetExtension(files[0].FileName);
 
@@ -106,7 +106,7 @@ namespace New_Ston_Request.Controllers
 
                     if (files.Count > 0)
                     {
-                        string upload = webRootPath + WC.ImagePath;
+                        string upload = webRootPath + WC.ProductImagePath;
                         string fileName = Guid.NewGuid().ToString();
                         string extension = Path.GetExtension(files[0].FileName);
 
@@ -168,7 +168,7 @@ namespace New_Ston_Request.Controllers
             {
                 return NotFound();
             }
-            string upload = _webHostEnvironment.WebRootPath + WC.ImagePath;
+            string upload = _webHostEnvironment.WebRootPath + WC.ProductImagePath;
 
             //for deleting old image
             var productImage = Path.Combine(upload, product.Image);
