@@ -27,12 +27,13 @@ namespace New_Ston_Request.Controllers
         }
         public IActionResult Index()
         {
-            IEnumerable<Product> plist = _db.Product;
-            foreach(var obj in plist)
+            IEnumerable<Product> productlist = _db.Product;
+            foreach(var product in productlist)
             {
-                obj.Category = _db.Category.FirstOrDefault(u => u.Id == obj.CategoryId);
+                product.Category = _db.Category.FirstOrDefault(u => u.Id == product.CategoryId);
+                //product.Category = _db.Category.Select(u => u).Where(u => u.Id == product.CategoryId).SingleOrDefault();
             };
-            return View(plist);
+            return View(productlist);
         }
 
         //GET Upsert
@@ -102,7 +103,7 @@ namespace New_Ston_Request.Controllers
                 {
                     // Updating
                     var oldProduct = _db.Product.AsNoTracking().FirstOrDefault(p => p.Id == productVM.Product.Id);
-                    //var oldProduct = _db.Product.Where(p => p.Id == productVM.Product.Id).Select(p => p).SingleOrDefault();
+                    //var oldProduct = _db.Product.AsNoTracking().Select(p => p).Where(p => p.Id == productVM.Product.Id).SingleOrDefault();
 
                     if (files.Count > 0)
                     {
