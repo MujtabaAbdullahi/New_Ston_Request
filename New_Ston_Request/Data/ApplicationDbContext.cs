@@ -1,9 +1,11 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 using New_Ston_Request.Models;
 
 namespace New_Ston_Request.Data
 {
-    public class ApplicationDbContext : DbContext
+    //public class ApplicationDbContext : DbContext        -----> without uer management
+    public class ApplicationDbContext : IdentityDbContext
     {
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options) {}
 
