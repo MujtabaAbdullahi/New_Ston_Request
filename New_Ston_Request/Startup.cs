@@ -30,8 +30,13 @@ namespace New_Ston_Request
                 Configuration.GetConnectionString("DefaultConnection")));
 
             //for individual user account
-            services.AddDefaultIdentity<IdentityUser>().AddEntityFrameworkStores<ApplicationDbContext>();
+            //services.AddDefaultIdentity<IdentityUser>().AddEntityFrameworkStores<ApplicationDbContext>();
 
+            services.AddIdentity<IdentityUser, IdentityRole>()
+                .AddDefaultTokenProviders().AddDefaultUI()
+                .AddEntityFrameworkStores<ApplicationDbContext>();
+
+            services.AddDistributedMemoryCache();
             services.AddHttpContextAccessor();
             services.AddSession(Option =>
             {
