@@ -13,9 +13,9 @@ namespace New_Ston_Request.Models
         public string Name { get; set; }
         [DisplayName("Display Oreder")]
         [Required]
-        [Range(1,1000, ErrorMessage ="Display Order must be greater than 0!")]
+        [Range(1, 1000, ErrorMessage = "Display Order must be greater than 0!")]
         public int DisplayOrder { get; set; }
-        
+
 
     }
 }

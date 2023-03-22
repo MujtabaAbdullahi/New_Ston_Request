@@ -2,7 +2,6 @@
 using New_Ston_Request.Data;
 using New_Ston_Request.Models;
 using System.Collections.Generic;
-using System.Security.Cryptography.X509Certificates;
 
 namespace New_Ston_Request.Controllers
 {
@@ -11,7 +10,7 @@ namespace New_Ston_Request.Controllers
 
         private readonly ApplicationDbContext _db;
 
-        public CategoryController(ApplicationDbContext db )
+        public CategoryController(ApplicationDbContext db)
         {
             _db = db;
         }

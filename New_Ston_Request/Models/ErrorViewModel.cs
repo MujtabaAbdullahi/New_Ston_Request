@@ -1,5 +1,3 @@
-using System;
-
 namespace New_Ston_Request.Models
 {
     public class ErrorViewModel
