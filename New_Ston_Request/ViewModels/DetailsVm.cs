@@ -1,5 +1,4 @@
-﻿using Microsoft.CodeAnalysis;
-using New_Ston_Request.Models;
+﻿using New_Ston_Request.Models;
 
 namespace New_Ston_Request.ViewModels
 {
@@ -13,4 +12,4 @@ namespace New_Ston_Request.ViewModels
         public Product Product { get; set; }
         public bool ExistsInCart { get; set; }
     }
-}    
+}

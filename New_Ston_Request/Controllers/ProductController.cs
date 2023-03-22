@@ -2,7 +2,6 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Storage.ValueConversion.Internal;
 using New_Ston_Request.Data;
 using New_Ston_Request.Models;
 using New_Ston_Request.ViewModels;
@@ -10,7 +9,6 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Security.Cryptography.X509Certificates;
 
 namespace New_Ston_Request.Controllers
 {
@@ -20,7 +18,7 @@ namespace New_Ston_Request.Controllers
         private readonly ApplicationDbContext _db;
         private readonly IWebHostEnvironment _webHostEnvironment;
 
-        public ProductController(ApplicationDbContext db, IWebHostEnvironment webHostEnvironment )
+        public ProductController(ApplicationDbContext db, IWebHostEnvironment webHostEnvironment)
         {
             _db = db;
             _webHostEnvironment = webHostEnvironment;
@@ -67,10 +65,10 @@ namespace New_Ston_Request.Controllers
             {
                 return View(productVM);
             }
-            else 
+            else
             {
                 productVM.Product = _db.Product.Find(id);
-                if(productVM.Product == null)
+                if (productVM.Product == null)
                 {
                     return NotFound();
                 }
@@ -145,15 +143,15 @@ namespace New_Ston_Request.Controllers
                     Text = i.Name,
                     Value = i.Id.ToString()
                 });
-                productVM.ApplicationTypeList = _db.ApplicationType.Select(i => new SelectListItem()
-                {
-                    Text = i.Name,
-                    Value = i.Id.ToString()
-                });
-                return View(productVM);
+            productVM.ApplicationTypeList = _db.ApplicationType.Select(i => new SelectListItem()
+            {
+                Text = i.Name,
+                Value = i.Id.ToString()
+            });
+            return View(productVM);
         }
 
-    
+
         //For deleting product
         public IActionResult Delete(int? id)
         {

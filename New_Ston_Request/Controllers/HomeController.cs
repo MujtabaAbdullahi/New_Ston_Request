@@ -5,11 +5,9 @@ using New_Ston_Request.Data;
 using New_Ston_Request.Models;
 using New_Ston_Request.Utility;
 using New_Ston_Request.ViewModels;
-using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
-using System.Threading.Tasks;
 
 namespace New_Ston_Request.Controllers
 {
@@ -51,9 +49,9 @@ namespace New_Ston_Request.Controllers
                 ExistsInCart = false
             };
 
-            foreach(var shopCart in shoppingCartsList)
+            foreach (var shopCart in shoppingCartsList)
             {
-                if(shopCart.ProductId == id)
+                if (shopCart.ProductId == id)
                 {
                     detailsVm.ExistsInCart = true;
                 }
@@ -67,7 +65,7 @@ namespace New_Ston_Request.Controllers
         public IActionResult DetailsPost(int id)
         {
             List<ShoppingCart> shoppingCartsList = new List<ShoppingCart>();
-            if(HttpContext.Session.Get<IEnumerable<ShoppingCart>>(WC.SessionCart) != null 
+            if (HttpContext.Session.Get<IEnumerable<ShoppingCart>>(WC.SessionCart) != null
                && HttpContext.Session.Get<IEnumerable<ShoppingCart>>(WC.SessionCart).Count() > 0)
             {
                 shoppingCartsList = HttpContext.Session.Get<List<ShoppingCart>>(WC.SessionCart);
@@ -88,7 +86,7 @@ namespace New_Ston_Request.Controllers
                 shoppingCartsList = HttpContext.Session.Get<List<ShoppingCart>>(WC.SessionCart);
             }
             var itemToRemove = shoppingCartsList.SingleOrDefault(s => s.ProductId == id);
-            if(itemToRemove != null)
+            if (itemToRemove != null)
             {
                 shoppingCartsList.Remove(itemToRemove);
             }

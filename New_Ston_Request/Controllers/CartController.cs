@@ -26,7 +26,7 @@ namespace New_Ston_Request.Controllers
         {
             List<ShoppingCart> shoppingCartList = new List<ShoppingCart>();
 
-            if(HttpContext.Session.Get<IEnumerable<ShoppingCart>>(WC.SessionCart) != null 
+            if (HttpContext.Session.Get<IEnumerable<ShoppingCart>>(WC.SessionCart) != null
                 && HttpContext.Session.Get<IEnumerable<ShoppingCart>>(WC.SessionCart).Count() > 0)
             {
                 shoppingCartList = HttpContext.Session.Get<List<ShoppingCart>>(WC.SessionCart);
@@ -66,7 +66,7 @@ namespace New_Ston_Request.Controllers
             productUserVM = new ProductUserVM()
             {
                 applicationUser = _db.ApplicationUser.FirstOrDefault(a => a.Id == claim.Value),
-                productList =prodList
+                productList = prodList
             };
 
 

@@ -1,9 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using New_Ston_Request.Data;
 using New_Ston_Request.Models;
 using System.Collections.Generic;
-using System.Linq;
 
 namespace New_Ston_Request.Controllers
 {
@@ -37,18 +35,18 @@ namespace New_Ston_Request.Controllers
                 return RedirectToAction("Index");
             }
             else
-            return View(applist);
+                return View(applist);
         }
 
         // Get specific Application type by it's id
         public IActionResult Edit(int? id)
         {
-            if(id== null || id== 0)
+            if (id == null || id == 0)
             {
                 return NotFound();
             }
             var appType = _db.ApplicationType.Find(id);
-            if(appType == null)
+            if (appType == null)
             {
                 return NotFound();
             }
