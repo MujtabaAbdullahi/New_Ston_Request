@@ -10,6 +10,6 @@ namespace New_Ston_Request.ViewModels
             productList = new List<Product>();
         }
         public ApplicationUser applicationUser { get; set; }
-        public IEnumerable<Product> productList { get; set; }
+        public IList<Product> productList { get; set; }
     }
 }
