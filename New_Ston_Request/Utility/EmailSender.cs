@@ -2,6 +2,7 @@
 using Mailjet.Client;
 using Mailjet.Client.Resources;
 using Microsoft.AspNetCore.Identity.UI.Services;
+using Microsoft.Extensions.Configuration;
 using Newtonsoft.Json.Linq;
 using System.Threading.Tasks;
 
@@ -9,6 +10,13 @@ namespace New_Ston_Request.Utility
 {
     public class EmailSender : IEmailSender
     {
+        private readonly IConfiguration _configuration;
+        public MailJetSettings mailJetsettings { get; set; }
+
+        public EmailSender(IConfiguration configuration)
+        {
+            _configuration = configuration; 
+        }
         public Task SendEmailAsync(string email, string subject, string htmlMessage)
         {
             return Execute(email, subject, htmlMessage);
@@ -16,7 +24,9 @@ namespace New_Ston_Request.Utility
 
         public async Task Execute(string email, string subject, string body)
         {
-            MailjetClient client = new MailjetClient("6b23a0061ab0c1cba301ae5c5637cdb8", "921f0be1299e345a66fbbc594feeb725")
+            mailJetsettings = _configuration.GetSection("MailJet").Get<MailJetSettings>();
+
+            MailjetClient client = new MailjetClient(mailJetsettings.ApiKey, mailJetsettings.SecretKey)
             {
                 Version = ApiVersion.V3_1,
             };

@@ -59,12 +59,14 @@
                                         <span class="text-info">Summery</span>
                                     </h4>
                                     <ul class="list-group mb-3">
-                                        @foreach(var pro in Model.productList)
+                                        @for(int i=0;i<Model.productList.Count();i++)
                                         {
+                                            <input asp-for="@Model.productList[i].Id" type="hidden" class="form-control">
+                                            <input asp-for="@Model.productList[i].Name" type="hidden" class="form-control">
                                             <li class="list-group-item d-flex justify-content-between">
                                                 <div class="">
-                                                    <h6 class="my-0">@pro.Name</h6>
-                                                    <small class="text-muted">Price : @((pro.Price).ToString("c"))</small>
+                                                    <h6 class="my-0">@Model.productList[i].Name</h6>
+                                                    <small class="text-muted">Price : @((Model.productList[i].Price).ToString("c"))</small>
                                                 </div>
                                             </li>
                                         }  
