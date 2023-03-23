@@ -128,7 +128,15 @@ namespace New_Stone_Request.Areas.Identity.Pages.Account
                     }
                     else
                     {
-                        await _signInManager.SignInAsync(user, isPersistent: false);
+                        if (!User.IsInRole(WC.AdminRole))
+                        {
+                            await _signInManager.SignInAsync(user, isPersistent: false);
+                        }
+                        else
+                        {
+                            return RedirectToAction(nameof(Index), "Home");
+                        }
+                        
                         return LocalRedirect(returnUrl);
                     }
                 }
