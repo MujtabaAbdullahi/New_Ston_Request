@@ -13,6 +13,7 @@ using System.Linq;
 using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Linq;
 
 namespace New_Ston_Request.Controllers
 {
@@ -144,7 +145,7 @@ namespace New_Ston_Request.Controllers
             }
             shoppingCartList.Remove(shoppingCartList.FirstOrDefault(p => p.ProductId == id));
             HttpContext.Session.Set(WC.SessionCart, shoppingCartList);
-
+            TempData["success"] = "Product Deleted from Cart Successfully";
             return RedirectToAction(nameof(Index));
         }
     }

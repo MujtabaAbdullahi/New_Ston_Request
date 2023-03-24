@@ -17,7 +17,7 @@
                 <span class="badge p-2 border w-100" style="background-color: aliceblue">@Model.ApplicationType.Name</span>
             </div>
             <div class="col-12 pt-2" style="font-size: 13px; text-align: justify">
-                <p>@Model.ShortDesc.Substring(0,20) .....</p>
+                <p>@Model.ShortDesc.Substring(0,10) .....</p>
             </div>
             <div class="col-12 p-1">
                 <a class="btn btn-dark form-control text-white btn-sm p-2" asp-action="Details" asp-route-id="@Model.Id" style="height: 40px;cursor: pointer">View Detail</a>

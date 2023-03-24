@@ -35,6 +35,7 @@ namespace New_Ston_Request.Controllers
             {
                 _db.ApplicationType.Add(applist);
                 _db.SaveChanges();
+                TempData["success"] = "Application Type Created Successfully";
                 return RedirectToAction("Index");
             }
             else
@@ -65,6 +66,7 @@ namespace New_Ston_Request.Controllers
             {
                 _db.ApplicationType.Update(appType);
                 _db.SaveChanges();
+                TempData["success"] = "Application Type Updated Successfully";
                 return RedirectToAction("Index");
             }
             else
@@ -96,6 +98,7 @@ namespace New_Ston_Request.Controllers
             }
             _db.ApplicationType.Remove(appType);
             _db.SaveChanges();
+            TempData["success"] = "Application Type Deleted Successfully";
             return RedirectToAction("Index");
         }
 

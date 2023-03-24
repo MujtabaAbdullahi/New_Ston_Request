@@ -104,6 +104,7 @@ namespace New_Ston_Request.Controllers
 
                     productVM.Product.Image = fileName + extension;
                     _db.Product.Add(productVM.Product);
+                    TempData["success"] = "Product Created Successfully";
                 }
                 else
                 {
@@ -135,6 +136,7 @@ namespace New_Ston_Request.Controllers
                         productVM.Product.Image = oldProduct.Image;
                     }
                     _db.Product.Update(productVM.Product);
+                    TempData["success"] = "Product Updated Successfully";
                 }
 
                 _db.SaveChanges();
@@ -178,6 +180,7 @@ namespace New_Ston_Request.Controllers
             var product = _db.Product.Find(id);
             if (product == null)
             {
+                TempData["error"] = "Sorry Someting went Wrong!";
                 return NotFound();
             }
             string upload = _webHostEnvironment.WebRootPath + WC.ProductImagePath;
@@ -189,6 +192,7 @@ namespace New_Ston_Request.Controllers
                 System.IO.File.Delete(productImage);
             }
 
+            TempData["success"] = "Product Deleted Successfully";
             _db.Product.Remove(product);
             _db.SaveChanges();
             return RedirectToAction("Index");

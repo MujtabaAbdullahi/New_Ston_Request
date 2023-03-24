@@ -39,6 +39,7 @@ namespace New_Ston_Request.Controllers
             {
                 _db.Category.Add(category);
                 _db.SaveChanges();
+                TempData["success"] = "Category Created Successfully";
                 return RedirectToAction("Index");
             }
             else
@@ -69,6 +70,7 @@ namespace New_Ston_Request.Controllers
             {
                 _db.Category.Update(category);
                 _db.SaveChanges();
+                TempData["success"] = "Category Updated Successfully";
                 return RedirectToAction("Index");
             }
             else
@@ -100,6 +102,7 @@ namespace New_Ston_Request.Controllers
             }
             _db.Category.Remove(category);
             _db.SaveChanges();
+            TempData["success"] = "Category Deleted Successfully";
             return RedirectToAction("Index");
         }
     }
