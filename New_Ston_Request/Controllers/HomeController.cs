@@ -75,7 +75,7 @@ namespace New_Ston_Request.Controllers
 
             shoppingCartsList.Add(new ShoppingCart { ProductId = id });
             HttpContext.Session.Set(WC.SessionCart, shoppingCartsList);
-
+            TempData["success"] = "Product added to Cart Successfully";
             return RedirectToAction(nameof(Index));
         }
 
@@ -94,6 +94,7 @@ namespace New_Ston_Request.Controllers
             }
 
             HttpContext.Session.Set(WC.SessionCart, shoppingCartsList);
+            TempData["success"] = "Product Removed from Cart Successfully";
             return RedirectToAction(nameof(Index));
         }
 
