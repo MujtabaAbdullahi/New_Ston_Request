@@ -17,8 +17,9 @@ using System.Xml.Linq;
 
 namespace New_Ston_Request.Controllers
 {
-    [Authorize]
+
     //[Authorize(Roles = WC.AdminRole)]
+    [Authorize]
     public class CartController : Controller
     {
         private readonly ApplicationDbContext _db;
