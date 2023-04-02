@@ -2,7 +2,6 @@
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.VisualBasic;
 using New_Ston_Request.Data;
 using New_Ston_Request.Models;
 using New_Ston_Request.Utility;
@@ -13,7 +12,6 @@ using System.Linq;
 using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
-using System.Xml.Linq;
 
 namespace New_Ston_Request.Controllers
 {
@@ -29,7 +27,7 @@ namespace New_Ston_Request.Controllers
         [BindProperty]
         public ProductUserVM productUserVM { get; set; }
 
-        public CartController(ApplicationDbContext db, IWebHostEnvironment webHostEnvironment,IEmailSender emailSender)
+        public CartController(ApplicationDbContext db, IWebHostEnvironment webHostEnvironment, IEmailSender emailSender)
         {
             _db = db;
             _webHostEnvironment = webHostEnvironment;
@@ -111,7 +109,7 @@ namespace New_Ston_Request.Controllers
             //    Products Intereseted:  { 3}
 
             StringBuilder productListSB = new StringBuilder();
-            foreach(var pro in productUserVM.productList)
+            foreach (var pro in productUserVM.productList)
             {
                 productListSB.Append($"- Name : {pro.Name} <span style='font-size: 14px'> (ID : {pro.Id})</span><br/>");
             }
