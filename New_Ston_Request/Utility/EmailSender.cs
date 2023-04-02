@@ -15,7 +15,7 @@ namespace New_Ston_Request.Utility
 
         public EmailSender(IConfiguration configuration)
         {
-            _configuration = configuration; 
+            _configuration = configuration;
         }
         public Task SendEmailAsync(string email, string subject, string htmlMessage)
         {

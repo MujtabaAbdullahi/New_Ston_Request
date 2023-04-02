@@ -136,7 +136,7 @@ namespace New_Stone_Request.Areas.Identity.Pages.Account
                         {
                             return RedirectToAction(nameof(Index), "Home");
                         }
-                        
+
                         return LocalRedirect(returnUrl);
                     }
                 }
